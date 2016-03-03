@@ -12,6 +12,24 @@ with open(abs_file_path) as data_file:
 	data = json.load(data_file)
 
 
+# Create text file containing bus routes data in suitable format for our web-page 
+rel_file_path = "data/routes_for_webpage.txt";
+abs_file_path = os.path.join(proj_dir, rel_file_path)
+with open(abs_file_path, 'w') as f:
+	# Making text file for bus routes data.
+	string_for_route = "";
+	for feature in data['features']:
+		string_for_route += "[";
+		for coord in feature['geometry']['coordinates']:
+			string_for_route += "{lng: ";
+			string_for_route += str(coord[0]);
+			string_for_route += ", lat: ";
+			string_for_route += str(coord[1]);
+			string_for_route += "},"
+		string_for_route += "],"
+	f.write(string_for_route)
+
+
 # Create a Well-Known-Text file and store the WKT data of the polygon formed by buffering (at a given width) routes.geojson lines.
 rel_file_path = "data/routes_buffered.wkt";
 abs_file_path = os.path.join(proj_dir, rel_file_path)
