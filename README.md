@@ -44,7 +44,7 @@ To derive Bus Stop locations from the given [acitvity points geojson file](https
 Following table will demonstrate conditions where there is a possibility of user being at a Bus Stop. ***Note:*** *According to the activity data, there are only four type of dominating activities: still, on_foot, on_bicycyle, in_vehicle, and none (attribute value is missing).*
 
 | previous_dominating_activity | current_dominating_activity | Possibility of being at a Bus Stop |
-| -------- |:------:| :--------: |
+| :--------: |:------:| :--------: |
 | still or on_foot or on_bicycle | in_vehicle | High probability |
 | in_vehicle | still or on_foot or on_bicycle | High probability |
 | none | in_vehicle | Medium probability |
@@ -76,3 +76,13 @@ Finally filtered activity points were compared with OpenStreetMap derived Bus Sa
 ---
 
 ### Data Processing using Python Scripts
+
+* Make a clone of this repository into your desired directory using git clone command. Else download the [zipped file](https://github.com/Zia-/Ally-gis-code-challenge-Solution/archive/master.zip). 
+`git clone https://github.com/Zia-/Ally-gis-code-challenge-Solution.git`
+
+* Now before any data processing we need Dar Es Salam OpenStreetMap data. Download it into data directory of this repository at your local machine, and rename it to *dar_es_salam.osm*. ***Note:*** *This OSM file has not been provided into the repository because of being very large in size (approx. 0.5 Gb).*
+`wget http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=39.0640,-7.1170,39.5269,-6.5767]`
+
+* Now in your terminal, navigate to the parent directory of this repository, ie. */Ally-gis-code-challenge-Solution$*. All the following commands must be executed being into this path.
+
+* Execute [select_pt_by_dominating_activity.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_by_dominating_activity.py) script. It will generate [act_pt_selected_by_dominating_activity.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_selected_by_dominating_activity.csv). This csv is the outcome of [*Filter crowdsourced points based on previous and current dominating acitivity*](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/README.md#42) filtering. 
