@@ -29,7 +29,7 @@ html, body
 #label
 {
 	position: absolute;
-	left: 120px;
+	left: 150px;
 	top: 10px;
 	z-index: 1;
 }
@@ -39,5 +39,13 @@ html, body
 	position: absolute;
 	left: 10px;
 	top: 220px;
+	z-index: 1;
+}
+
+#ally_logo
+{
+	position: absolute;
+	left: 110px;
+	top: 9px;
 	z-index: 1;
 }
