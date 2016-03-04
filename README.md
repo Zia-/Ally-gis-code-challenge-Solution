@@ -109,7 +109,7 @@ Finally filtered activity points were compared with OpenStreetMap derived Bus Sa
     $python python/club_nearby_act_pts.py
     ```
 
-* Finally, execute [select_pt_compare_with_osm.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_compare_with_osm.py) python script to derive [OSM Bus Stops](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations.csv), and generate final activity points data ([act_pt_checked_against_osm.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_checked_against_osm.csv)) with OSM flag (which will let us know if the activity pt is close to a Bus Stop derived from OSM or not). This is the filtering of *Compare final filtered data with OSM derived Bus Stop locations* filter above :point_up_2:. ***NOTE:*** *BE CAREFUL!, this process is gonna take an appreciable amount of time depending upon the size of .osm file being used. So be ready!*
+* Finally, execute [select_pt_compare_with_osm.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_compare_with_osm.py) python script to derive [OSM Bus Stops](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations.csv), and generate final activity points data ([act_pt_checked_against_osm.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_checked_against_osm.csv)) with OSM flag (which will let us know if the activity pt is close to a Bus Stop derived from OSM or not). This is the filtering of *Compare final filtered data with OSM derived Bus Stop locations* filter above :point_up_2:. ***NOTE:*** **BE CAREFUL!** *, this process is gonna take an appreciable amount of time depending upon the size of .osm file being used. So be ready! In case you want another fast approach, follow the instructions of "OSM Bus Stops location extraction using osm2pgsql program" section, after "Visualizing results in a Web-Map" section below :point_down:*
 
     ```c
     $python python/select_pt_compare_with_osm.py
@@ -130,3 +130,31 @@ Do the following three steps in order to visualize the results in a Google Web-M
 * Copy the content of [activity_pts_filtered_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/activity_pts_filtered_for_webpage.txt) and paste at the prescribed location in [activity_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/activity_pts.js).
 * Transfer data in similar fashion from [osm_bus_stations_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations_for_webpage.txt) and [routes_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes_for_webpage.txt) to [osm_bus_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/osm_bus_pts.js) and [bus_routes.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/bus_routes.js), respectively.
 * Now open the [index.html](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/index.html) page, and visualize and appreciate the result. And, please try to make something good out of it. :relaxed:
+
+
+---
+---
+---
+
+### OSM Bus Stops location extraction using osm2pgsql program
+
+* Setting up a PostGIS enabled PostgreSQL database is beyond the scope of current work. A good source of documentation is available [here](https://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21UbuntuPGSQL93Apt).
+* Install osm2pgsql
+
+    ```c
+    $sudo apt-get install osm2pgsql
+    ```
+
+* Setup a PostGIS enabled database named *Ally_Db*, with current username.
+* Now load dar_es_salam.osm file into the database using the following command
+
+    ```c
+    $ osm2pgsql <Path_To_OSM_File>/dar_es_salam.osm -d Ally_Db -U <Your_Username> -P 5432
+    ```
+    
+* OSM2PGSQL will generate four tables in Ally_Db database, namely *planet_osm_line*, *planet_osm_point*, *planet_osm_polygon*, and *planet_osm_roads*. 
+* Bus Stop point locations are present only in *planet_osm_point* table. Thus, collect them into a new table "osm_bus_locations" by running the following SQL in the PgAdminIII SQL Editor (this is what I prefer to use) 
+
+    ```c
+    select ST_X(ST_Transform(way, 4326)) as x, ST_Y(ST_Transform(way, 4326)) as y, name into osm_bus_locations from planet_osm_point where amenity like 'bus%' or highway like 'bus%'
+    ```
