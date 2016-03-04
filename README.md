@@ -35,3 +35,23 @@ To derive Bus Stop locations from the given [acitvity points geojson file](https
 * Compare final filtered data with OSM derived Bus Stop locations.
   
 #### 1. Filter crowdsourced points based on previous and current dominating acitivity
+
+Following table will demonstrate conditions where there is a possibility of user being at a Bus Stop. ***Note:*** *According to the activity data, there are only four type of dominating activities: still, on_foot, on_bicycyle, in_vehicle, and none (attribute value is missing).*
+
+| previous_dominating_activity | current_dominating_activity | Possibility of being at a Bus Stop |
+| -------- |:------:| :--------: |
+| still or on_foot or on_bicycle | in_vehicle | High probability |
+| in_vehicle | still or on_foot or on_bicycle | High probability |
+| none | in_vehicle | Medium probability |
+| in_vehicle | none | Medium probability |
+| none | still or on_foot or on_bicycle | Low probability | 
+| still or on_foot or on_bicycle | none | Low probability |
+| still or on_foot or on_bicycle | still or on_foot or on_bicycle | Least probability |
+
+Activity points corresponding to the **High probability** and **Medium probability** were selected at this stage.
+
+#### 2. Filter filtered points using [Bus Routes geojson data](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes.geojson)
+
+Now, since, the **in_vehicle** dominating activity could correspond to any "in vehicle" state of the user, not only Bus but also other personal or shared vehicles, activity points lying in the proximity of the available [Bus Routes data](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes.geojson) were selected by creating buffer around the routes. 
+
+![alt tag](https://raw.githubusercontent.com/Zia-/Ally-gis-code-challenge-Solution/master/web-page/icon/legend.png)
