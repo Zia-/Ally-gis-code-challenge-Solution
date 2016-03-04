@@ -54,4 +54,19 @@ Activity points corresponding to the **High probability** and **Medium probabili
 
 Now, since, the **in_vehicle** dominating activity could correspond to any "in vehicle" state of the user, not only Bus but also other personal or shared vehicles, activity points lying in the proximity of the available [Bus Routes data](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes.geojson) were selected by creating buffer around the routes. 
 
-![alt tag](https://raw.githubusercontent.com/Zia-/Ally-gis-code-challenge-Solution/master/web-page/icon/legend.png)
+![bufferring explained](https://raw.githubusercontent.com/Zia-/Ally-gis-code-challenge-Solution/master/web-page/icon/buffer_explain.png)
+
+#### 3. Merge nearby points to avoid redundency
+
+Since there are many activity points lying spatially close to each other, they practically cannot represent different Bus Stations, as Bus Stations must be separated by some distance. Thus, only one among many nearby activity points was selected to represent a possible Bus Station. ***Note:*** *Those nearby points were not merged or averaged as this may generate a point far away from Bus Routes, especially at curved Bus Route locations.*
+
+![clubbing explained](https://raw.githubusercontent.com/Zia-/Ally-gis-code-challenge-Solution/master/web-page/icon/clubbing_explain.png)
+
+#### 4. Compare final filtered data with OSM derived Bus Stop locations
+
+Finally filtered activity points were compared with OpenStreetMap derived Bus Sations. It is a good practice to validate your findings from other sources. Proper flag value was assigned to different activity points, depending upon closeness with OSM Bus Stop, for better representation in the final Web-Page. ***Note:*** *Data was not filtered using OSM derived data because both are crowdsourced generated and no one is believed to be the true picture of Bus Stops in Dar Es Salam.*
+
+![osm proximity explained](https://raw.githubusercontent.com/Zia-/Ally-gis-code-challenge-Solution/master/web-page/icon/osm_proximity_explain.png)
+
+
+### Data Processing using Python Scripts
