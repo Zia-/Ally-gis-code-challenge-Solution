@@ -59,19 +59,20 @@ Activity points corresponding to the **High probability** and **Medium probabili
 
 Now, since, the **in_vehicle** dominating activity could correspond to any "in vehicle" state of the user, not only Bus but also other personal or shared vehicles, activity points lying in the proximity of the available [Bus Routes data](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes.geojson) were selected by creating buffer around the routes. 
 
-![bufferring explained](https://raw.githubusercontent.com/Zia-/Ally-gis-code-challenge-Solution/master/web-page/icon/buffer_explain.png)
+<p align="center"><img src="https://raw.githubusercontent.com/Zia-/Ally-gis-code-challenge-Solution/master/web-page/icon/buffer_explain.png" width="500"></p>
 
 #### 3. Merge nearby points to avoid redundency
 
 Since there are many activity points lying spatially close to each other, they practically cannot represent different Bus Stations, as Bus Stations must be separated by some distance. Thus, only one among many nearby activity points was selected to represent a possible Bus Station. ***Note:*** *Those nearby points were not merged or averaged as this may generate a point far away from Bus Routes, especially at curved Bus Route locations.*
 
-![clubbing explained](https://raw.githubusercontent.com/Zia-/Ally-gis-code-challenge-Solution/master/web-page/icon/clubbing_explain.png)
+<p align="center"><img src="https://raw.githubusercontent.com/Zia-/Ally-gis-code-challenge-Solution/master/web-page/icon/clubbing_explain.png" width="500"></p>
 
 #### 4. Compare final filtered data with OSM derived Bus Stop locations
 
 Finally filtered activity points were compared with OpenStreetMap derived Bus Sations. It is a good practice to validate your findings from other sources. Proper flag value was assigned to different activity points, depending upon closeness with OSM Bus Stop, for better representation in the final Web-Page. ***Note:*** *Data was not filtered using OSM derived data because both are crowdsourced generated and no one is believed to be the true picture of Bus Stops in Dar Es Salam.*
 
-![osm proximity explained](https://raw.githubusercontent.com/Zia-/Ally-gis-code-challenge-Solution/master/web-page/icon/osm_proximity_explain.png)
+<p align="center"><img src="https://raw.githubusercontent.com/Zia-/Ally-gis-code-challenge-Solution/master/web-page/icon/osm_proximity_explain.png" width="500"></p>
+
 
 ---
 
@@ -109,7 +110,7 @@ Finally filtered activity points were compared with OpenStreetMap derived Bus Sa
     $python python/club_nearby_act_pts.py
     ```
 
-* Finally, execute [select_pt_compare_with_osm.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_compare_with_osm.py) python script to derive [OSM Bus Stops](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations.csv), and generate final activity points data ([act_pt_checked_against_osm.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_checked_against_osm.csv)) with OSM flag (which will let us know if the activity pt is close to a Bus Stop derived from OSM or not). This is the filtering of *Compare final filtered data with OSM derived Bus Stop locations* filter above :point_up_2:. ***NOTE:*** **BE CAREFUL!** *, this process is gonna take an appreciable amount of time depending upon the size of .osm file being used. So be ready! In case you want another fast approach, follow the instructions of "OSM Bus Stops location extraction using osm2pgsql program" section, after "Visualizing results in a Web-Map" section below :point_down:*
+* Finally, execute [select_pt_compare_with_osm.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_compare_with_osm.py) python script to derive [OSM Bus Stops](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations.csv), and generate final activity points data ([act_pt_checked_against_osm.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_checked_against_osm.csv)) with OSM flag (which will let us know if the activity pt is close to a Bus Stop derived from OSM or not). This is the filtering of *Compare final filtered data with OSM derived Bus Stop locations* filter above :point_up_2:. ***NOTE:*** **BE CAREFUL!** *, this process is gonna take an appreciable amount of time depending upon the size of .osm file being used. So be ready! In case you want another fast approach, follow the instructions of "OSM Bus Stops location extraction using osm2pgsql program" section, after "Visualizing results in a Web-Map" section below :point_down:*.
 
     ```c
     $python python/select_pt_compare_with_osm.py
