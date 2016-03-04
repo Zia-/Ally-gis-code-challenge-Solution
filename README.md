@@ -109,11 +109,24 @@ Finally filtered activity points were compared with OpenStreetMap derived Bus Sa
     $python python/club_nearby_act_pts.py
     ```
 
-* Finally, execute [select_pt_compare_with_osm.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_compare_with_osm.py) python script to derive [OSM Bus Stops](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations.csv), and generate final activity points data ([act_pt_checked_against_osm.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_checked_against_osm.csv)) with OSM flag (which will let us know if the activity pt is close to a Bus Stop derived from OSM or not). This is the filtering of *Compare final filtered data with OSM derived Bus Stop locations* filter above :point_up_2:.
+* Finally, execute [select_pt_compare_with_osm.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_compare_with_osm.py) python script to derive [OSM Bus Stops](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations.csv), and generate final activity points data ([act_pt_checked_against_osm.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_checked_against_osm.csv)) with OSM flag (which will let us know if the activity pt is close to a Bus Stop derived from OSM or not). This is the filtering of *Compare final filtered data with OSM derived Bus Stop locations* filter above :point_up_2:. ***NOTE:*** *BE CAREFUL, this process is gonna take an appreciable amount of time depending upon the size of .osm file, being used.*
 
     ```c
     $python python/select_pt_compare_with_osm.py
     ```
 
+* You need to run [convert_data_format_for_web_page.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/convert_data_format_for_web_page.py) script also to generate [activity_pts_filtered_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/activity_pts_filtered_for_webpage.txt) and [osm_bus_stations_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations_for_webpage.txt) files in order to populate [activity_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/activity_pts.js) and [osm_bus_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/osm_bus_pts.js) files, respectively. 
 
+    ```c
+    $python python/convert_data_format_for_web_page.py
+    ```
 
+---
+
+### Visualizing results in a Web-Map
+
+Do the following three steps in order to visualize the results in a Google Web-Map. ***Note:*** *For dynamic visualization, we need a running server at back end to handle [activity_pts_filtered_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/activity_pts_filtered_for_webpage.txt), [osm_bus_stations_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations_for_webpage.txt), and [routes_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes_for_webpage.txt). Direct access to these files will create an HTTP access control (CORS) issue.*
+
+* Copy the content of [activity_pts_filtered_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/activity_pts_filtered_for_webpage.txt) and paste at the prescribed location in [activity_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/activity_pts.js).
+* Transfer data in similar fashion from [osm_bus_stations_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations_for_webpage.txt) and [routes_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes_for_webpage.txt) to [osm_bus_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/osm_bus_pts.js) and [bus_routes.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/bus_routes.js), respectively.
+* Now open the [index.html](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/index.html) page, and visualize and appreciate the result. Please try to create something good out of it. ![relaxed](https://raw.githubusercontent.com/Zia-/Ally-gis-code-challenge-Solution/master/web-page/icon/buffer_explain.png)
