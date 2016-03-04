@@ -158,3 +158,28 @@ Do the following three steps in order to visualize the results in a Google Web-M
     ```c
     select ST_X(ST_Transform(way, 4326)) as x, ST_Y(ST_Transform(way, 4326)) as y, name into osm_bus_locations from planet_osm_point where amenity like 'bus%' or highway like 'bus%'
     ```
+
+* Now, in order to export this table in csv format we need psql terminal. Go to psql terminal 
+
+    ```c
+    $ psql
+    ```
+    
+* Change the database to *Ally_Db* and run the *\copy* command. ***Note:*** *Make sure that osm_bus_locations owner and psql user is same, otherwise be ready for PERMISSION DENIED issue*
+
+```c
+=> \connect Ally_Db
+=> \copy osm_bus_locations to '<Path_To_Your_Repository>/data/osm_bus_stations.csv' csv header
+```
+
+* Finally, execute [osm2pgsql_select_pt_compare_with_osm.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/osm2pgsql_select_pt_compare_with_osm.py) python script to generate final activity points data ([act_pt_checked_against_osm.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_checked_against_osm.csv)) with OSM flag (which will let us know if the activity pt is close to a Bus Stop derived from OSM or not). This is the filtering of *Compare final filtered data with OSM derived Bus Stop locations* filter above :point_up_2:.
+
+    ```c
+    $ python python_scripts/osm2pgsql_select_pt_compare_with_osm.py
+    ```
+
+* You need to run [convert_data_format_for_web_page.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/convert_data_format_for_web_page.py) script also to generate [activity_pts_filtered_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/activity_pts_filtered_for_webpage.txt) and [osm_bus_stations_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations_for_webpage.txt) files in order to populate [activity_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/activity_pts.js) and [osm_bus_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/osm_bus_pts.js) files, respectively. 
+
+    ```c
+    $python python/convert_data_format_for_web_page.py
+    ```
