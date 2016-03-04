@@ -78,11 +78,24 @@ Finally filtered activity points were compared with OpenStreetMap derived Bus Sa
 ### Data Processing using Python Scripts
 
 * Make a clone of this repository into your desired directory using git clone command. Else download the [zipped file](https://github.com/Zia-/Ally-gis-code-challenge-Solution/archive/master.zip). 
-`git clone https://github.com/Zia-/Ally-gis-code-challenge-Solution.git`
+`$git clone https://github.com/Zia-/Ally-gis-code-challenge-Solution.git`
 
 * Now before any data processing we need Dar Es Salam OpenStreetMap data. Download it into data directory of this repository at your local machine, and rename it to *dar_es_salam.osm*. ***Note:*** *This OSM file has not been provided into the repository because of being very large in size (approx. 0.5 Gb).*
-`wget http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=39.0640,-7.1170,39.5269,-6.5767]`
+`$wget http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=39.0640,-7.1170,39.5269,-6.5767]`
 
 * Now in your terminal, navigate to the parent directory of this repository, ie. */Ally-gis-code-challenge-Solution$*. All the following commands must be executed being into this path.
 
-* Execute [select_pt_by_dominating_activity.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_by_dominating_activity.py) script. It will generate [act_pt_selected_by_dominating_activity.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_selected_by_dominating_activity.csv). This csv is the outcome of [*Filter crowdsourced points based on previous and current dominating acitivity*](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/README.md#L42) filtering. 
+* Execute [select_pt_by_dominating_activity.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_by_dominating_activity.py) script. It will generate [act_pt_selected_by_dominating_activity.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_selected_by_dominating_activity.csv). This csv is the outcome of *Filter crowdsourced points based on previous and current dominating acitivity* filtering above :point_up_2:.
+`$python python/select_pt_by_dominating_activity.py`
+
+* Now execute [select_pt_by_routes_buffer.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_by_routes_buffer.py) script. It will generate [act_pt_selected_by_routes_buffer.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_selected_by_routes_buffer.csv), [routes_buffered.wkt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes_buffered.wkt), and [routes_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes_for_webpage.txt) files. [routes_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes_for_webpage.txt) will be used in  our final Web-page. [routes_buffered.wkt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes_buffered.wkt) could be used for data visualization purposes in GIS software like QGIS. And, [act_pt_selected_by_routes_buffer.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_selected_by_routes_buffer.csv) is the outcome of *Filter filtered points using [Bus Routes geojson data](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes.geojson)* filtering above :point_up_2:.
+`$python python/select_pt_by_routes_buffer.py`
+
+* Club nearby activity points by running [club_nearby_act_pts.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/club_nearby_act_pts.py) script. It will result into [act_pt_clubbed_nearby_pts.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_clubbed_nearby_pts.csv) data, which is the result of *Merge nearby points to avoid redundency* filtering above :point_up_2:.
+`$python python/club_nearby_act_pts.py`
+
+* Finally, execute [select_pt_compare_with_osm.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_compare_with_osm.py) python script to derive [OSM Bus Stops](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations.csv), and generate final activity points data ([act_pt_checked_against_osm.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_checked_against_osm.csv)) with OSM flag (which will let us know if the activity pt is close to a Bus Stop derived from OSM or not). This is the filtering of *Compare final filtered data with OSM derived Bus Stop locations* filter above :point_up_2:.
+`$python python/select_pt_compare_with_osm.py`
+
+
+
