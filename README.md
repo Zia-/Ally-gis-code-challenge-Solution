@@ -95,31 +95,31 @@ Finally filtered activity points were compared with OpenStreetMap derived Bus Sa
 * Execute [select_pt_by_dominating_activity.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_by_dominating_activity.py) script. It will generate [act_pt_selected_by_dominating_activity.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_selected_by_dominating_activity.csv). This csv is the outcome of *Filter crowdsourced points based on previous and current dominating acitivity* filtering above :point_up_2:.
 
     ```c
-    $python python/select_pt_by_dominating_activity.py
+    $python python_sripts/select_pt_by_dominating_activity.py
     ```
 
 * Now execute [select_pt_by_routes_buffer.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_by_routes_buffer.py) script. It will generate [act_pt_selected_by_routes_buffer.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_selected_by_routes_buffer.csv), [routes_buffered.wkt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes_buffered.wkt), and [routes_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes_for_webpage.txt) files. [routes_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes_for_webpage.txt) will be used in  our final Web-page. [routes_buffered.wkt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes_buffered.wkt) could be used for data visualization purposes in GIS software like QGIS. And, [act_pt_selected_by_routes_buffer.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_selected_by_routes_buffer.csv) is the outcome of *Filter filtered points using [Bus Routes geojson data](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes.geojson)* filtering above :point_up_2:.
 
     ```c
-    $python python/select_pt_by_routes_buffer.py
+    $python python_sripts/select_pt_by_routes_buffer.py
     ```
 
 * Club nearby activity points by running [club_nearby_act_pts.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/club_nearby_act_pts.py) script. It will result into [act_pt_clubbed_nearby_pts.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_clubbed_nearby_pts.csv) data, which is the result of *Merge nearby points to avoid redundency* filtering above :point_up_2:.
  
     ```c
-    $python python/club_nearby_act_pts.py
+    $python python_sripts/club_nearby_act_pts.py
     ```
 
 * Finally, execute [select_pt_compare_with_osm.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_compare_with_osm.py) python script to derive [OSM Bus Stops](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations.csv), and generate final activity points data ([act_pt_checked_against_osm.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_checked_against_osm.csv)) with OSM flag (which will let us know if the activity pt is close to a Bus Stop derived from OSM or not). This is the filtering of *Compare final filtered data with OSM derived Bus Stop locations* filter above :point_up_2:. ***NOTE:*** **BE CAREFUL!** *, this process is gonna take an appreciable amount of time depending upon the size of .osm file being used. So be ready! In case you want another fast approach, follow the instructions of "OSM Bus Stops location extraction using osm2pgsql program" section, after "Visualizing results in a Web-Map" section below :point_down:*.
 
     ```c
-    $python python/select_pt_compare_with_osm.py
+    $python python_sripts/select_pt_compare_with_osm.py
     ```
 
 * You need to run [convert_data_format_for_web_page.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/convert_data_format_for_web_page.py) script also to generate [activity_pts_filtered_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/activity_pts_filtered_for_webpage.txt) and [osm_bus_stations_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations_for_webpage.txt) files in order to populate [activity_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/activity_pts.js) and [osm_bus_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/osm_bus_pts.js) files, respectively. 
 
     ```c
-    $python python/convert_data_format_for_web_page.py
+    $python python_sripts/convert_data_format_for_web_page.py
     ```
 
 ---
@@ -182,5 +182,5 @@ Do the following three steps in order to visualize the results in a Google Web-M
 * You need to run [convert_data_format_for_web_page.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/convert_data_format_for_web_page.py) script also to generate [activity_pts_filtered_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/activity_pts_filtered_for_webpage.txt) and [osm_bus_stations_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations_for_webpage.txt) files in order to populate [activity_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/activity_pts.js) and [osm_bus_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/osm_bus_pts.js) files, respectively. 
 
     ```c
-    $python python/convert_data_format_for_web_page.py
+    $python python_sripts/convert_data_format_for_web_page.py
     ```
