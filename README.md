@@ -78,7 +78,7 @@ Finally filtered activity points were compared with OpenStreetMap derived Bus Sa
 
 ### Data Processing using Python Scripts
 
-* Make a clone of this repository into your desired directory using git clone command. Else download the [zipped file](https://github.com/Zia-/Ally-gis-code-challenge-Solution/archive/master.zip). 
+* Make a clone of this repository into your desired directory using git clone command. Else download the [zipped file](https://github.com/Zia-/Ally-gis-code-challenge-Solution/archive/master.zip). ***Note:*** *In case, the copying and pasting of following terminal commands does not work in your machine, please type in the whole command manually to make it work.*
 
     ```c
     $git clone https://github.com/Zia-/Ally-gis-code-challenge-Solution.git
