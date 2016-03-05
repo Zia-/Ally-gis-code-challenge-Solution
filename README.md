@@ -147,7 +147,7 @@ Do the following three steps in order to visualize the results in a Google Web-M
     ```
 
 * Setup a PostGIS enabled database named *Ally_Db*, with current username.
-* Now load **data/dar_es_salam.osm** file into the database using the following command
+* Now load *data/dar_es_salam.osm* file into the database using the following command
 
     ```c
     $ osm2pgsql <Path_To_OSM_File>/dar_es_salam.osm -d Ally_Db -U <Your_Username> -P 5432
