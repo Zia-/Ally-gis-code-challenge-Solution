@@ -137,7 +137,7 @@ Do the following three steps in order to visualize the results in a Google Web-M
 ---
 ---
 
-### OSM Bus Stops location extraction using osm2pgsql program
+### OSM Bus Stops location extraction using Osm2pgsql program
 
 * Setting up a PostGIS enabled PostgreSQL database is beyond the scope of current work. A good source of documentation is available [here](https://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21UbuntuPGSQL93Apt).
 * Install osm2pgsql
@@ -153,7 +153,7 @@ Do the following three steps in order to visualize the results in a Google Web-M
     $ osm2pgsql <Path_To_This Repository>/data/dar_es_salam.osm -d Ally_Db -U <Your_Username> -P 5432
     ```
     
-* OSM2PGSQL will generate four tables in Ally_Db database, namely *planet_osm_line*, *planet_osm_point*, *planet_osm_polygon*, and *planet_osm_roads*. 
+* Osm2pgsql will generate four tables in Ally_Db database, namely *planet_osm_line*, *planet_osm_point*, *planet_osm_polygon*, and *planet_osm_roads*. 
 * Bus Stop point locations are present only in *planet_osm_point* table. Thus, collect them into a new table "osm_bus_locations" by running the following SQL in the PgAdminIII SQL Editor (this is what I prefer to use) 
 
     ```c
