@@ -20,7 +20,7 @@ To derive Bus Stop locations from the given [acitvity points geojson file](https
 | properties/current_dominating_activity | :heavy_check_mark: | It tells what the user is doing now. |
 | properties/timestamp | :heavy_multiplication_x: | It is the time of data acquisition. Since we do not know if one user has generated this activity points data or more, no time relationship could be established between different timestamps. |
 | properties/created_at | :heavy_multiplication_x: | It is the time of data storing. It is always few seconds after timestamp (except for one feature, which could be considered as an error). Again the same timestamp logic is applicable here also. |
-| properties/altitude | :heavy_multiplication_x: | This information could be of some help is the Mean Sea Level of whole Dar Es Salam was constant and all buses had some definite height. Since, it is not the case, no direct usage is possible. |
+| properties/altitude | :heavy_multiplication_x: | This information could be of some help if the Mean Sea Level of whole Dar Es Salam was constant and all buses had some definite height. Since, it is not the case, no direct usage is possible. |
 | properties/feature | :heavy_multiplication_x: | No useful as it is same for all the features. |
 | properties/id | :heavy_multiplication_x: | Not useful. |
 | properties/speed | :heavy_check_mark: | It gives the current speed of the user. Useful in combination with previous and current dominating activity. |
