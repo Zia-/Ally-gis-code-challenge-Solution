@@ -27,7 +27,7 @@ To derive Bus Stop locations from the given [acitvity points geojson file](https
 | properties/route | :heavy_multiplication_x: | It is same for all the features, hence, useless. |
 | properties/current_dominating_activity_confidence | :heavy_check_mark: | It gives the confidence level of information about current dominating activity. |
 | properties/accuracy | :heavy_check_mark: | It gives the accuracy level of stored lat-long data. Could be used to drop activity points to the nearest bus route. |
-| goemetry/type     | :heavy_multiplication_x:     |  Same for all the features. Not usefull. | 
+| goemetry/type     | :heavy_multiplication_x:     |  Same for all the features. Not useful. | 
 |   geometry/coordinates       |    :heavy_multiplication_x:    | Not useful. |
 
 ---
