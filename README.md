@@ -153,8 +153,8 @@ Do the following three steps in order to visualize the results in a Google Web-M
     $ osm2pgsql <Path_To_This Repository>/data/dar_es_salam.osm -d Ally_Db -U <Your_Username> -P 5432
     ```
     
-* Osm2pgsql will generate four tables in Ally_Db database, namely *planet_osm_line*, *planet_osm_point*, *planet_osm_polygon*, and *planet_osm_roads*. 
-* Bus Stop point locations are present only in *planet_osm_point* table. Thus, collect them into a new table "osm_bus_locations" by running the following SQL in the PgAdminIII SQL Editor (this is what I prefer to use) 
+* Osm2pgsql will generate four tables in *Ally_Db* database, namely *planet_osm_line*, *planet_osm_point*, *planet_osm_polygon*, and *planet_osm_roads*. 
+* Bus Stop point locations are present only inside the *planet_osm_point* table. Thus, collect them into a new table *osm_bus_locations* by running the following SQL in the PgAdminIII SQL Editor (this is what I prefer to use) 
 
     ```c
     select ST_X(ST_Transform(way, 4326)) as x, ST_Y(ST_Transform(way, 4326)) as y, name into osm_bus_locations from planet_osm_point where amenity like 'bus%' or highway like 'bus%'
