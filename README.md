@@ -150,7 +150,7 @@ Do the following three steps in order to visualize the results in a Google Web-M
 * Now load *data/dar_es_salam.osm* file into the database using the following command
 
     ```c
-    $ osm2pgsql <Path_To_This Repository>/data/dar_es_salam.osm -d Ally_Db -U <Your_Username> -P 5432
+    $ osm2pgsql <Path_To_Your Repository>/data/dar_es_salam.osm -d Ally_Db -U <Your_Username> -P 5432
     ```
     
 * Osm2pgsql will generate four tables in *Ally_Db* database, namely *planet_osm_line*, *planet_osm_point*, *planet_osm_polygon*, and *planet_osm_roads*. 
@@ -166,7 +166,7 @@ Do the following three steps in order to visualize the results in a Google Web-M
     $ psql
     ```
     
-* Change the database to *Ally_Db* and run the *\copy* command. ***Note:*** *Make sure that osm_bus_locations owner and psql user is the same, otherwise be ready for PERMISSION DENIED issue*
+* Change the database to *Ally_Db* and run the *\copy* command. ***Note:*** *Make sure that osm_bus_locations owner and psql user is the same, otherwise be ready for PERMISSION DENIED issue.*
 
 ```c
 => \connect Ally_Db
