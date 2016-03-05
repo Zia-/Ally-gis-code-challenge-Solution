@@ -78,7 +78,7 @@ Finally filtered activity points were compared with OpenStreetMap derived Bus Sa
 
 ### Data Processing using Python Scripts
 
-* Make a clone of this repository into your desired directory using git clone command. Else download the [zipped file](https://github.com/Zia-/Ally-gis-code-challenge-Solution/archive/master.zip). ***Note:*** *In case, the copying and pasting of following terminal commands does not work in your machine, please type in the whole command manually to make it work.*
+* Make a clone of this repository into your desired directory using git clone command. Else download the [zipped file](https://github.com/Zia-/Ally-gis-code-challenge-Solution/archive/master.zip). ***Note:*** *In case, the copying and pasting of following terminal commands does not work in your machine, please type in the whole command manually to make it work. This whole development has been done in Ubuntu machine and all the following commands are mainly applicable for that. Personally, I haven't executed python scripts on Mac or Windows machines.*
 
     ```c
     $git clone https://github.com/Zia-/Ally-gis-code-challenge-Solution.git
@@ -147,7 +147,7 @@ Do the following three steps in order to visualize the results in a Google Web-M
     ```
 
 * Setup a PostGIS enabled database named *Ally_Db*, with current username.
-* Now load dar_es_salam.osm file into the database using the following command
+* Now load **data/dar_es_salam.osm** file into the database using the following command
 
     ```c
     $ osm2pgsql <Path_To_OSM_File>/dar_es_salam.osm -d Ally_Db -U <Your_Username> -P 5432
