@@ -1,4 +1,4 @@
-// This array will hold all markers which will define calculates filterted bus stations
+// This array will hold all markers which will display calculated filterted bus stations
 var markers = [];
 
 // This fun will be called by fun_cal_bus_stops fun
@@ -67,7 +67,7 @@ function fun_cal_bus_stops(){
 
 //-------------------------------------------------------------------------------
 
-// This array will hold all markers which will define OSM selected bus stations
+// This array will hold all markers which will display OSM selected bus stations
 var markers_osm = [];
 
 // This fun will be called by fun_osm_bus_stops fun
@@ -122,7 +122,7 @@ function fun_osm_bus_stops(){
 
 //-------------------------------------------------------------------------------
 
-// This array will hold all roads present in the routes.geojson file
+// This array will hold all roads present in the data/routes.geojson file
 var routes = [];
 
 // This fun will be called by fun_cal_bus_route fun
