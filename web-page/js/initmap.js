@@ -1,7 +1,7 @@
 // This variable will hold google map object instance
 var var_map;
 
-// Define init_map fun, which will fire on window load
+// Define init_map fun., which will fire on window load
 function init_map() {
   // Center of the map
   var var_location = new google.maps.LatLng(-6.809245, 39.261146);
