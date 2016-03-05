@@ -110,7 +110,7 @@ Finally filtered activity points were compared with OpenStreetMap derived Bus Sa
     $python python_sripts/club_nearby_act_pts.py
     ```
 
-* Finally, execute [select_pt_compare_with_osm.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_compare_with_osm.py) python script to derive [OSM Bus Stops](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations.csv), and generate final activity points data ([act_pt_checked_against_osm.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_checked_against_osm.csv)) with OSM flag (which will let us know if the activity pt is close to a Bus Stop derived from OSM or not). This is the filtering of *Compare final filtered data with OSM derived Bus Stop locations* filter above :point_up_2:. ***NOTE:*** **BE CAREFUL!** *, this process is gonna take an appreciable amount of time depending upon the size of .osm file being used. So be ready! In case you want another fast approach, follow the instructions of "OSM Bus Stops location extraction using Osm2pgsql program" section below :point_down:, which I have used personally to finish this task sooner*.
+* Finally, execute [select_pt_compare_with_osm.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_compare_with_osm.py) python script to derive [OSM Bus Stop locations](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations.csv), and generate final activity points data ([act_pt_checked_against_osm.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_checked_against_osm.csv)) with OSM flag (which will let us know if the activity pt is close to a Bus Stop derived from OSM or not). This is the filtering of *Compare final filtered data with OSM derived Bus Stop locations* filter above :point_up_2:. ***NOTE:*** **BE CAREFUL!** *, this process is gonna take an appreciable amount of time depending upon the size of .osm file being used. So be ready! In case you want another fast approach, follow the instructions of "OSM Bus Stops location extraction using Osm2pgsql program" section below :point_down:, which I have used personally to finish this task sooner*.
 
     ```c
     $python python_sripts/select_pt_compare_with_osm.py
@@ -160,13 +160,13 @@ Do the following three steps in order to visualize the results in a Google Web-M
     select ST_X(ST_Transform(way, 4326)) as x, ST_Y(ST_Transform(way, 4326)) as y, name into osm_bus_locations from planet_osm_point where amenity like 'bus%' or highway like 'bus%'
     ```
 
-* Now, in order to export this table in csv format we need psql terminal. Go to psql terminal 
+* Now, in order to export this table in csv format we need psql terminal. Go for it. 
 
     ```c
     $ psql
     ```
     
-* Change the database to *Ally_Db* and run the *\copy* command. ***Note:*** *Make sure that osm_bus_locations owner and psql user is same, otherwise be ready for PERMISSION DENIED issue*
+* Change the database to *Ally_Db* and run the *\copy* command. ***Note:*** *Make sure that osm_bus_locations owner and psql user is the same, otherwise be ready for PERMISSION DENIED issue*
 
 ```c
 => \connect Ally_Db
