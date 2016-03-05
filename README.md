@@ -179,8 +179,10 @@ Do the following three steps in order to visualize the results in a Google Web-M
     $ python python_scripts/osm2pgsql_select_pt_compare_with_osm.py
     ```
 
-* You need to run [convert_data_format_for_web_page.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/convert_data_format_for_web_page.py) script also to generate [activity_pts_filtered_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/activity_pts_filtered_for_webpage.txt) and [osm_bus_stations_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations_for_webpage.txt) files in order to populate [activity_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/activity_pts.js) and [osm_bus_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/osm_bus_pts.js) files, respectively. 
+* You need to run [convert_data_format_for_web_page.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/convert_data_format_for_web_page.py) script also to generate [activity_pts_filtered_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/activity_pts_filtered_for_webpage.txt) and [osm_bus_stations_for_webpage.txt](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/osm_bus_stations_for_webpage.txt) files in order to populate [activity_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/activity_pts.js) and [osm_bus_pts.js](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/web-page/js/osm_bus_pts.js) javascript files, respectively. 
 
     ```c
     $python python_sripts/convert_data_format_for_web_page.py
     ```
+
+* Now perform *Visualizing results in a Web-Map* section above :point_up_2: to visualize results.
