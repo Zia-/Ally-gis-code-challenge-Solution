@@ -34,7 +34,7 @@ To derive Bus Stop locations from the given [acitvity points geojson file](https
 
 ### Methodology to derive Bus Stop locations from [activity_points.geojson data](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/activity_points.geojson)
 
-* Filter crowdsourced points based on previous and current dominating acitivity.
+* Filter crowdsourced points based on previous and current dominating activity.
 * Filter filtered points using [Bus Routes geojson data](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes.geojson).
 * Merge nearby points to avoid redundency.
 * Compare final filtered data with OSM derived Bus Stop locations.
