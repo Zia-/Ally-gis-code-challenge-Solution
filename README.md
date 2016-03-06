@@ -54,7 +54,7 @@ Following table demonstrates all possible combinations of previous and current d
 | still or on_foot or on_bicycle | still or on_foot or on_bicycle | Least probability |
 | in_vehicle | in_vehicle | Least probability |
 
-Activity points corresponding to the **High probability** and **Medium probability** were selected at this stage.
+Activity points corresponding to the **High probability** and **Medium probability** were selected at this stage. In order to be at a probable Bus Stop the user must change its dominating activity either to *in_vehicle* or from *in_vehicle*. Since for *none* state we cannot say the activity, it has low probability. Above table is easy to perceive.
 
 #### 2. Filter filtered points using [Bus Routes geojson data](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/routes.geojson)
 
