@@ -41,7 +41,7 @@ To derive Bus Stop locations from the given [acitvity points geojson file](https
   
 #### 1. Filter crowdsourced points based on previous and current dominating acitivity
 
-Following table will demonstrate conditions where there is a possibility of user being at a Bus Stop. ***Note:*** *According to the activity data, there are only four type of dominating activities: still, on_foot, on_bicycyle, in_vehicle, and none (attribute value is missing).*
+Following table demonstrates all possible combinations of previous and current dominating activity, along with the possibility of user being at a Bus Stop. ***Note:*** *According to the activity data, there are only four type of dominating activities: still, on_foot, on_bicycyle, in_vehicle, and none (attribute value is missing).*
 
 | previous_dominating_activity | current_dominating_activity | Possibility of being at a Bus Stop |
 | :--------: |:------:| :--------: |
@@ -51,7 +51,7 @@ Following table will demonstrate conditions where there is a possibility of user
 | in_vehicle | none | Medium probability |
 | none | still or on_foot or on_bicycle | Low probability | 
 | still or on_foot or on_bicycle | none | Low probability |
-| still or on_foot or on_bicycle or | still or on_foot or on_bicycle | Least probability |
+| still or on_foot or on_bicycle | still or on_foot or on_bicycle | Least probability |
 | in_vehicle | in_vehicle | Least probability |
 
 Activity points corresponding to the **High probability** and **Medium probability** were selected at this stage.
