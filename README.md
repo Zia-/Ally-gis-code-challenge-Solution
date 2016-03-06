@@ -51,7 +51,8 @@ Following table will demonstrate conditions where there is a possibility of user
 | in_vehicle | none | Medium probability |
 | none | still or on_foot or on_bicycle | Low probability | 
 | still or on_foot or on_bicycle | none | Low probability |
-| still or on_foot or on_bicycle or in_vehicle  | still or on_foot or on_bicycle or in_vehicle, respectively | Least probability |
+| still or on_foot or on_bicycle or | still or on_foot or on_bicycle | Least probability |
+| in_vehicle | in_vehicle | Least probability |
 
 Activity points corresponding to the **High probability** and **Medium probability** were selected at this stage.
 
