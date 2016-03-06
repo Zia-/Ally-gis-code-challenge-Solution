@@ -14,21 +14,21 @@ To derive Bus Stop locations from the given [acitvity points geojson file](https
 | Available Attributes of Features | Could it be used to locate Bus Stop locations? | Reason |
 | :--------: |:------:| :--------: |
 | type    | :heavy_multiplication_x: | It is constant for all features. |
-| properties/previous_dominating_activity | :heavy_check_mark: | It tells what the user was doing before. |
-| properties/bearing | :heavy_multiplication_x: | It gives the direction of user's current movement, which cannot be used any logically for Bus Stop locations estimation. |
-| properties/previous_dominating_activity_confidence | :heavy_check_mark: | It gives the confidence level of information about previous dominating activity. |
-| properties/current_dominating_activity | :heavy_check_mark: | It tells what the user is doing now. |
-| properties/timestamp | :heavy_multiplication_x: | It is the time of data acquisition. Since we do not know if one user has generated this activity points data or more, no time relationship could be established between different timestamps. |
-| properties/created_at | :heavy_multiplication_x: | It is the time of data storing. It is always few seconds after timestamp (except for one feature, which could be considered as an error). Again the same timestamp logic is applicable here also. |
-| properties/altitude | :heavy_multiplication_x: | This information could be of some help if the Mean Sea Level of whole Dar Es Salam was constant and all buses had some definite height. Since, it is not the case, no direct usage is possible. |
-| properties/feature | :heavy_multiplication_x: | Not useful as it is same for all the features. |
-| properties/id | :heavy_multiplication_x: | Not useful. |
-| properties/speed | :heavy_check_mark: | It gives the current speed of the user. Useful in combination with previous and current dominating activity. |
-| properties/route | :heavy_multiplication_x: | It is same for all the features, hence, useless. |
-| properties/current_dominating_activity_confidence | :heavy_check_mark: | It gives the confidence level of information about current dominating activity. |
-| properties/accuracy | :heavy_check_mark: | It gives the accuracy level of stored lat-long data. Could be used to drop activity points to the nearest bus route. |
-| goemetry/type     | :heavy_multiplication_x:     |  Same for all the features. Not useful. | 
-|   geometry/coordinates       |    :heavy_multiplication_x:    | Not useful. |
+| properties / previous_dominating_activity | :heavy_check_mark: | It tells what the user was doing before. |
+| properties / bearing | :heavy_multiplication_x: | It gives the direction of user's current movement, which cannot be used any logically for Bus Stop locations estimation. |
+| properties / previous_dominating_activity_confidence | :heavy_check_mark: | It gives the confidence level of information about previous dominating activity. |
+| properties / current_dominating_activity | :heavy_check_mark: | It tells what the user is doing now. |
+| properties / timestamp | :heavy_multiplication_x: | It is the time of data acquisition. Since we do not know if one user has generated this activity points data or more, no time relationship could be established between different timestamps. |
+| properties / created_at | :heavy_multiplication_x: | It is the time of data storing. It is always few seconds after timestamp (except for one feature, which could be considered as an error). Again the same timestamp logic is applicable here also. |
+| properties / altitude | :heavy_multiplication_x: | This information could be of some help if the Mean Sea Level of whole Dar Es Salam was constant and all buses had some definite height. Since, it is not the case, no direct usage is possible. |
+| properties / feature | :heavy_multiplication_x: | Not useful as it is same for all the features. |
+| properties / id | :heavy_multiplication_x: | Not useful. |
+| properties / speed | :heavy_check_mark: | It gives the current speed of the user. Useful in combination with previous and current dominating activity. |
+| properties / route | :heavy_multiplication_x: | It is same for all the features, hence, useless. |
+| properties / current_dominating_activity_confidence | :heavy_check_mark: | It gives the confidence level of information about current dominating activity. |
+| properties / accuracy | :heavy_check_mark: | It gives the accuracy level of stored lat-long data. Could be used to drop activity points to the nearest bus route. |
+| goemetry / type     | :heavy_multiplication_x:     |  Same for all the features. Not useful. | 
+|   geometry / coordinates       |    :heavy_multiplication_x:    | Not useful. |
 
 ---
 
