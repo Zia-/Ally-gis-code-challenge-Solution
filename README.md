@@ -91,7 +91,7 @@ Finally filtered activity points were compared with OpenStreetMap derived Bus Sa
     $wget http://overpass.osm.rambler.ru/cgi/xapi_meta?*[bbox=39.0640,-7.1170,39.5269,-6.5767]
     ```
 
-* Now in your terminal, navigate to the parent directory of this repository, ie. */Ally-gis-code-challenge-Solution$*. All the following commands must be executed being into this path. ***Note:** *It is totally possible to merge all the developed scripts into one, but author has prefered to keep them separate in order to improve methodology understandability and code readability.*
+* Now in your terminal, navigate to the parent directory of this repository, ie. */Ally-gis-code-challenge-Solution$*. All the following commands must be executed being into this path. ***Note:*** *It is totally possible to merge all the developed scripts into one, but author has prefered to keep them separate in order to improve methodology understandability and code readability.*
 
 * Execute [select_pt_by_dominating_activity.py](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/python_scripts/select_pt_by_dominating_activity.py) script. It will generate [act_pt_selected_by_dominating_activity.csv](https://github.com/Zia-/Ally-gis-code-challenge-Solution/blob/master/data/act_pt_selected_by_dominating_activity.csv). This csv is the outcome of *Filter crowdsourced points based on previous and current dominating acitivity* filtering above :point_up_2:.
 
