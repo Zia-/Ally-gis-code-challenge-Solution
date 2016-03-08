@@ -11,6 +11,33 @@ with open(abs_file_path) as data_file:
 	data = json.load(data_file)
 
 
+# Create text file containing activity_points.geojson file data in suitable format for our web-page 
+rel_file_path = "data/activity_pts_for_webpage.txt";
+abs_file_path = os.path.join(proj_dir, rel_file_path)
+with open(abs_file_path, 'w') as f:
+	# Making text file for activity points.
+	string_for_act_pt = "";
+	for feature in data['features']:
+		string_for_act_pt += "{x: ";
+		string_for_act_pt += str(feature['geometry']['coordinates'][0]);
+		string_for_act_pt += ", y: ";
+		string_for_act_pt += str(feature['geometry']['coordinates'][1]);
+		string_for_act_pt += ", pda: \"";
+		string_for_act_pt += str(feature['properties']['previous_dominating_activity']);
+		string_for_act_pt += "\", pdac: ";
+		string_for_act_pt += str(feature['properties']['previous_dominating_activity_confidence']);
+		string_for_act_pt += ", cda: \"";
+		string_for_act_pt += str(feature['properties']['current_dominating_activity']);
+		string_for_act_pt += "\", cdac: ";
+		string_for_act_pt += str(feature['properties']['current_dominating_activity_confidence']);
+		string_for_act_pt += ", speed: ";
+		string_for_act_pt += str(feature['properties']['speed']);
+		string_for_act_pt += ", accuracy: ";
+		string_for_act_pt += str(feature['properties']['accuracy']);
+		string_for_act_pt += "}, ";
+	f.write(string_for_act_pt);
+
+
 # A list which will store the filtered features based on dominating activity
 data_filtered = list()
 

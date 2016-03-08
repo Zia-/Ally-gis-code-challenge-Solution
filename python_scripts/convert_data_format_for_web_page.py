@@ -75,3 +75,5 @@ with open(abs_file_path, 'w') as f:
 			string_for_osm_bus_stop += str(feature[2]);
 			string_for_osm_bus_stop += "\"}, ";
 	f.write(string_for_osm_bus_stop);
+
+

@@ -157,3 +157,104 @@ function fun_cal_bus_route(){
     setMapOnAll_routes(null);
   }
 }
+
+//-------------------------------------------------------------------------------
+
+// This array will hold all markers which will display Activity Points
+var markers_act_pts = [];
+
+// This fun will be called by fun_act_pts fun
+function setMapOnAll_act(map) {
+	// Loop through all Activity Points
+	for (var i=0; i < list_act_pts.length; ++i){
+		var location = {lat: list_act_pts[i].y, lng: list_act_pts[i].x};
+		// Infowindow which will show the name value of each activity point
+		infoWindow = new google.maps.InfoWindow({})
+		// Defining image, which will be used in google.map.marker
+		var image = {
+		    url: 'icon/activity_points.png',
+		    scaledSize: new google.maps.Size(20, 20),
+		  };
+		// Defining marker
+		var mar = new google.maps.Marker({
+	      position: location,
+	      map: var_map,
+	      icon: image,
+	      //content: "Name: " + String(list_osm[i].name),
+	      content: "<table class=\"table table-bordered\">"+
+	      				"<thead>"+
+			      			"<tr>"+
+				      			"<td><p align=\"center\"><b>Attribute</b></p></td>"+
+				      			"<td><p align=\"center\"><b>Value</b></p></td>"+
+			      			"</tr>"+
+			      		"</thead>"+
+			      		"<tbody>"+
+			      			"<tr>"+
+				      			"<td>Previous Dominating Activity</td>"+
+				      			"<td>"+
+				      			String(list_act_pts[i].pda)+
+				      			"</td>"+
+				      		"</tr>"+
+			      			"<tr>"+
+				      			"<td>Previous Dominating Activity Confidence</td>"+
+				      			"<td>"+
+				      			String(list_act_pts[i].pdac)+
+				      			"</td>"+
+			      			"</tr>"+
+			      			"<tr>"+
+				      			"<td>Current Dominating Activity</td>"+
+				      			"<td>"+
+				      			String(list_act_pts[i].cda)+
+				      			"</td>"+
+				      		"</tr>"+
+			      			"<tr>"+
+				      			"<td>Current Dominating Activity Confidence</td>"+
+				      			"<td>"+
+				      			String(list_act_pts[i].cdac)+
+				      			"</td>"+
+			      			"</tr>"+
+			      			"<tr>"+
+				      			"<td>Speed</td>"+
+				      			"<td>"+
+				      			String(list_act_pts[i].speed)+
+				      			"</td>"+
+				      		"</tr>"+
+			      			"<tr>"+
+				      			"<td>Accuracy</td>"+
+				      			"<td>"+
+				      			String(list_act_pts[i].accuracy)+
+				      			"</td>"+
+			      			"</tr>"+
+			      		"</tbody>"+
+	      			"</table>",
+	      zIndex: 1,
+	    });
+		// Defining mouseover event handler
+	    google.maps.event.addListener(mar, 'mouseover', function() {
+			infoWindow.setContent(this.content),
+			infoWindow.open(var_map, this);
+		});
+		// Defining mouseout event handler
+		google.maps.event.addListener(mar, 'mouseout', function() {
+			infoWindow.close(var_map, this);
+		});
+		// Append all markers into markers_osm array
+	    markers_act_pts.push(mar);
+	}
+	// Loop through all elements of markers_osm array and feed into the map
+	for (var i = 0; i < markers_act_pts.length; i++) {
+	  markers_act_pts[i].setMap(map);
+	}
+}
+
+// This fun is attached to "Activity Points" checkbox
+function fun_act_pts(){
+  var remember = document.getElementById('cb_act_pts');
+  // Following if else is for toggle functionality
+  if (remember.checked){
+    setMapOnAll_act(var_map);
+  }
+  else{
+    setMapOnAll_act(null);
+  }
+}
